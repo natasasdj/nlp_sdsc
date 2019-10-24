@@ -1,20 +1,13 @@
 import json
 import os
 
-'''
-######  preprocessing of the democratic test dataset #####
-input: democrasci_prodt_part1_April8.jsonl
-output: pp_accepted_.txt
-        file where each line contain one token(word) with its name entity (PER, LOC, ORG, MISC, O) preceeded by B- or I-
-- from jsonl are taken only lines with answer='accept'
-- BILL and LAW are replaced with O
-- if a token is the first in the word phrase than B- is added to its name entity, otherwise I-   
-'''
+# preprocessing of the test democracy dataset
+# the same as in preprocess_democr-other.py except that BILL and LAW are not replaced with O
 
 data_dir = '/home/IRISAD/natasa.sdj/nlp_sdsc/democrasci_bert/data'
 fname = os.path.join(data_dir,'other','democrasci_prodt_part1_April8.jsonl')
 f = open(fname, encoding='utf-8')
-fname = os.path.join(data_dir,'other','pp_accepted_.txt')
+fname = os.path.join(data_dir,'other','pp_accepted_2.txt')
 fw = open(fname, 'w+', encoding='utf-8')
 
 for line in f:
@@ -26,8 +19,8 @@ for line in f:
     for span in json_line['spans']:
         first = True
         tag = None
-        if 'LAW' in span['label'] or 'BILL' in span['label']:
-            tag = 'O'
+        #if 'LAW' in span['label'] or 'BILL' in span['label']:
+        #    tag = 'O'
         for j in range(span['token_start'],span['token_end']+1):
             if tag: continue
             if first:

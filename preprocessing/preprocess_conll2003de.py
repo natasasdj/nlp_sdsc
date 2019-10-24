@@ -1,4 +1,4 @@
-import o
+import os
 
 # create sentences from CoNLL-2003 German dataset
 # this is needed to get a format for fine-tuning bert
