@@ -20,3 +20,5 @@ preprocess_democrasci.py
 ###### preprocessing CoNLL-2003 German dataset dataset
 preprocess_conll2003de.py
 - this is needed to get a format for input to Bert, in order to further fine-tune Bert 
+- train.txt is a merged file of train.deu, testa.deu and testb.deu (seperated by an empy file)
+- the CoNLL-2003 datasets are already in the format suitable for the BERT-NER, so no preprocessing is needed
